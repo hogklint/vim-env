@@ -6,6 +6,7 @@ Bundle 'Valloric/YouCompleteMe'
 " YouCompleteMe
 """""""""""""""
 let g:ycm_confirm_extra_conf = 0
+"let g:ycm_register_as_syntasic_checker = 0
 nmap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 """""""

@@ -11,6 +11,7 @@ Bundle 'gmarik/vundle'
 Bundle 'mileszs/ack.vim'
 Bundle 'vim-scripts/QFixToggle'
 Bundle 'tpope/vim-fugitive'
+Bundle 'mbbill/undotree'
 
 "Enable filetype plugin
 filetype plugin on
@@ -69,6 +70,10 @@ autocmd VimLeave * call SetTitle("reset")
 "Set mapleader
 let mapleader = ","
 let g:mapleader = ","
+
+"Undotree
+nmap <leader>u :UndotreeToggle<CR>
+let g:undotree_SplitWidth=45
 
 " Fugitive
 nmap <leader>d :Gdiff<CR>
