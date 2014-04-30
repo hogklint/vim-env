@@ -157,6 +157,7 @@ function! BuildSubSystem(j)
   endif
 endfunction
 
+au BufRead,BufNewFile *[0-9]\{5\}.log setfiletype tcc
 
 command -complete=file -nargs=+ F call GrepTCC(<f-args>)
 
