@@ -27,3 +27,9 @@ syn match cbr '3[0-9]\{2\}' contained
 syn match file2comma ',[0-9]\{3\},' contains=cbi,cbr
 hi def link cbr r
 hi def link cbi i
+
+" log level
+syn match crit 'critical' contained
+syn match comma2comma ',critical,' contains=crit
+highlight red ctermfg=Red
+hi def link crit red
