@@ -12,6 +12,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'vim-scripts/QFixToggle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'mbbill/undotree'
+Bundle 'chrisbra/vim-diff-enhanced'
 
 "Enable filetype plugin
 filetype plugin on
@@ -82,7 +83,7 @@ nmap <leader>u :UndotreeToggle<CR>
 let g:undotree_SplitWidth=45
 
 " Fugitive
-nmap <leader>d :Gdiff<CR>
+nmap <leader>d :Gvdiff<CR>
 nmap <leader>s :Gstatus<CR>
 nmap <leader>b :Gblame<CR>
 nmap <leader>e :Gedit<CR>
