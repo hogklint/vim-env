@@ -1,6 +1,9 @@
 Bundle 'kien/ctrlp.vim'
 Bundle 'Valloric/YouCompleteMe'
-"Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/syntastic'
+Bundle 'majutsushi/tagbar'
+
+au BufRead,BufNewFile *.hpp set syntax=cpp.doxygen
 
 """""""""""""""
 " YouCompleteMe
@@ -36,6 +39,7 @@ let g:ctrlp_extensions = ['tag']
 
 "Look for ctags file
 set tags=$HOME/$CURRENTPROJ/.git/tags;/
+set statusline=%<%F%{tagbar#currenttag(':%s','','')}\ %{fugitive#statusline()}%=%([%M%R%H%W]\ %)%l,%c%V\ %P\ (%n)
 
 """""""""""
 " Functions
