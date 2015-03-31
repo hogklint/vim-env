@@ -165,4 +165,4 @@ nmap <F6> :call SwitchStub()<CR>
 nmap <F7> :call SwitchTest()<CR>
 nmap <F9> :call BuildSubSystem("")<CR><CR>
 nmap <F11> :call BuildUnitTest()<CR>
-cabbrev cleansyslog :%s/\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d.\d\d+\d\d:\d\d tcc1a fspA\[\d\{1,5\}\]: \[ID \d\d\d\d\d\d user.\(info\\|debug\\|warning\\|crit\\|whitebox\)\] ,10040,A,//
+cabbrev cleansyslog :%s/\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d.\d\d+\d\d:\d\d tcc1a fspA\[\d\{1,5\}\]: \[ID \d\d\d\d\d\d user.\(info\\|debug\\|warning\\|crit\\|whitebox\)\] ,[0-9]{5},A,//
