@@ -234,6 +234,9 @@ set background=dark
 
 set wildignore+=*.o,*.obj,.git,*Test*,*.idl,*.xml
 
+"Don't redraw while in marcro
+set lazyredraw
+
 "Enable syntax hl
 syntax enable
 
