@@ -1,8 +1,3 @@
-Bundle 'kien/ctrlp.vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
-
 au BufRead,BufNewFile *.hpp set syntax=cpp.doxygen
 
 """""""""""""""
@@ -36,6 +31,7 @@ nmap <leader>l :CtrlPBuffer<CR>
 nmap <leader>f :CtrlPBufTag<CR>
 nmap <leader>F :CtrlPTag<CR>
 let g:ctrlp_extensions = ['tag']
+"nnoremap <silent> <c-p> :call fzf#run({ 'dir': expand($HOME) }/expand($CURRENTPROJ))<CR>
 
 "Look for ctags file
 set tags=$HOME/$CURRENTPROJ/.git/tags;/

@@ -1,22 +1,37 @@
-set nocompatible               " be iMproved
+"set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+"Bundle 'gmarik/vundle'
 
-Bundle 'mileszs/ack.vim'
-Bundle 'vim-scripts/QFixToggle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'mbbill/undotree'
-Bundle 'chrisbra/vim-diff-enhanced'
+"Bundle 'mileszs/ack.vim'
+"Bundle 'vim-scripts/QFixToggle'
+"Bundle 'tpope/vim-fugitive'
+"Bundle 'mbbill/undotree'
+"Bundle 'chrisbra/vim-diff-enhanced'
+
+call plug#begin('~/.vim/bundle')
+Plug 'mileszs/ack.vim'
+Plug 'vim-scripts/QFixToggle'
+Plug 'tpope/vim-fugitive'
+Plug 'mbbill/undotree'
+Plug 'chrisbra/vim-diff-enhanced'
+
+" Host specific plugins
+let hostfile=$HOME."/.vim/profiles/plug-".hostname().".vim"
+if filereadable(hostfile)
+  exe "source " . hostfile
+endif
+
+call plug#end()
 
 "Enable filetype plugin
-filetype plugin on
-filetype indent on
+"filetype plugin on
+"filetype indent on
 
 " Highlight whitespace and long lines
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
@@ -85,7 +100,7 @@ let g:undotree_SplitWidth=45
 " Fugitive
 nmap <leader>d :Gvdiff<CR>
 nmap <leader>s :Gstatus<CR>
-nmap <leader>b :Gblame<CR>
+nmap <leader>b :Gblame -w -M<CR>
 nmap <leader>e :Gedit<CR>
 
 

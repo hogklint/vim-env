@@ -1,8 +1,3 @@
-Bundle 'kien/ctrlp.vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
-
 au BufRead,BufNewFile *.hpp set syntax=cpp.doxygen
 
 """""""""""""""

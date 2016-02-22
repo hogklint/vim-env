@@ -1,5 +1,3 @@
-Bundle 'kien/ctrlp.vim'
-
 """"" CtrlP
 "let g:ctrlp_cmd="CtrlP ~/TCC_ER_CIS_SW"
 let g:ctrlp_cmd="CtrlP ".expand($HOME)."/".expand($CURRENTPROJ)
