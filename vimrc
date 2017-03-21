@@ -37,20 +37,29 @@ call plug#end()
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 highlight BeyondEighty ctermbg=darkred guibg=darkred
 au BufWinEnter * let w:m1=matchadd('ExtraWhitespace', '\s\+$\| \+\ze\t', -1)
-au BufWinEnter *.cpp,*.hpp,Makefile,*.java,*.pl,*.py,*.c,*.h let w:m2=matchadd('BeyondEighty', '\%>80v.\+', -1)
+au BufWinEnter *.cpp,*.hpp,Makefile,*.java,*.pl,*.py,*.c,*.h let w:m2=matchadd('BeyondEighty', '\%>120.\+', -1)
 
 """"""""""""""""""""""""""""""
 " Functions
 """"""""""""""""""""""""""""""
 " Switch between cpp source and header
 function! SwitchSourceHeader()
-   "update!
-   if (expand ("%:e") == "cpp")
-     ":edit "%:r.hpp"
-     find %:r.hpp
-   elseif (expand ("%:e") == "hpp")
-     find %:r.cpp
-     "find %:t:r.cpp
+   if (expand ("%:e") == "cpp" || expand ("%:e") == "c")
+     if filereadable(expand("%:r").".hpp")
+      find %:r.hpp
+     elseif filereadable(expand("%:r").".h")
+       find %:r.h
+     else
+       echo "No h/hpp file found"
+     endif
+   elseif (expand ("%:e") == "hpp" || expand ("%:e") == "h")
+     if filereadable(expand("%:r").".cpp")
+       find %:r.cpp
+     elseif filereadable(expand("%:r").".c")
+       find %:r.c
+     else
+       echo "No c/cpp file found"
+     endif
    endif
 endfunction
 
