@@ -3,7 +3,7 @@ au BufRead,BufNewFile *.hpp set syntax=cpp.doxygen
 """""""""""""""
 " YouCompleteMe
 """""""""""""""
-let g:ycm_confirm_extra_conf = 0
+"let g:ycm_confirm_extra_conf = 0
 "let g:ycm_register_as_syntasic_checker = 0
 nmap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_server_python_interpreter = "/usr/bin/python2"
@@ -12,12 +12,13 @@ let g:ycm_server_python_interpreter = "/usr/bin/python2"
 " CtrlP
 """""""
 "let g:ctrlp_cmd="CtrlP ~/TCC_ER_CIS_SW"
-let g:ctrlp_cmd="CtrlP ".expand($HOME)."/".expand($CURRENTPROJ)
+"let g:ctrlp_cmd="CtrlP ".expand($HOME)."/".expand($CURRENTPROJ)
+let g:ctrlp_root_markers = ['build/.ctrlp']
 let g:ctrlp_max_height=40
 let g:ctrlp_switch_buffer=2
 let g:ctrlp_clear_cache_on_exit=0
 let g:ctrlp_dotfiles=0
-let g:ctrlp_custom_ignore='SunOS_i86pc$\|\.d$\|\.o$\|\.a$\|\.tcov$'
+let g:ctrlp_custom_ignore='SunOS_i86pc$\|\.d$\|\.o$\|\.a$\|\.tcov$\|build$\|^test$\|\.orig$'
 let g:ctrlp_lazy_update=0
 let g:ctrlp_prompt_mappings = {
  \ 'PrtSelectMove("j")':   ['<c-n>', '<down>'],
@@ -37,11 +38,22 @@ let g:ctrlp_extensions = ['tag']
 """"""""""""""
 " Clang Format
 """"""""""""""
-autocmd FileType c,cpp,objc ClangFormatAutoEnable
+"autocmd FileType c,cpp,objc ClangFormatAutoEnable
 nmap <leader>m :ClangFormatAutoToggle<cr>
+nmap <leader>= :ClangFormat<cr>
+let g:clang_format#code_stype = "google"
+let g:clang_format#style_options = {
+            \ "ColumnLimit" : 120,
+            \ "IndentWidth" : 4,
+            \ "AccessModifierOffset" : -2,
+            \ "BreakBeforeBraces" : "Allman"}
+
+"            \ "AllowShortIfStatementsOnASingleLine" : "true",
+"            \ "AlwaysBreakTemplateDeclarations" : "true",
+"            \ "Standard" : "C++11",
 
 "Look for ctags file
-"set tags=$HOME/$CURRENTPROJ/.git/tags;/
+set tags=$HOME/$CURRENTPROJ/.git/tags;/
 set statusline=%<%F%{tagbar#currenttag(':%s','','')}\ %{fugitive#statusline()}%=%([%M%R%H%W]\ %)%l,%c%V\ %P\ (%n)
 
 """""""""""
@@ -136,3 +148,7 @@ nmap <F6> :call SwitchStub()<CR>
 nmap <F7> :call SwitchTest()<CR>
 nmap <F9> :call BuildSubSystem("")<CR><CR>
 nmap <F10> :call BuildFile()<CR><CR>
+
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
