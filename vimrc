@@ -16,7 +16,7 @@ filetype off                   " required!
 
 call plug#begin('~/.vim/bundle')
 Plug 'mileszs/ack.vim'
-Plug 'vim-scripts/QFixToggle'
+Plug 'nomme/QFixToggle'
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
 Plug 'chrisbra/vim-diff-enhanced'
@@ -111,6 +111,7 @@ nmap <leader>d :Gvdiff<CR>
 nmap <leader>s :Gstatus<CR>
 nmap <leader>b :Gblame -w -M<CR>
 nmap <leader>e :Gedit<CR>
+nnoremap <f2> :Ggrep <cword> *<CR><CR>
 
 
 map <F1> :Explore<cr>
@@ -146,7 +147,7 @@ vnoremap <silent> # :call VisualSearch('b')<CR>
 map <space> /
 map <c-space> ?
 
-" Move between windows
+" Split navigation
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
