@@ -13,7 +13,8 @@ let g:ycm_server_python_interpreter = "/usr/bin/python2"
 """""""
 "let g:ctrlp_cmd="CtrlP ~/TCC_ER_CIS_SW"
 "let g:ctrlp_cmd="CtrlP ".expand($HOME)."/".expand($CURRENTPROJ)
-let g:ctrlp_root_markers = ['build/.ctrlp']
+"let g:ctrlp_root_markers = ['build/.ctrlp']
+let g:ctrlp_root_markers = ['.git']
 let g:ctrlp_max_height=40
 let g:ctrlp_switch_buffer=2
 let g:ctrlp_clear_cache_on_exit=0
