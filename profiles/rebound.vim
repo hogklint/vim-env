@@ -1,10 +1,3 @@
-Bundle 'kien/ctrlp.vim'
-Bundle 'racer-rust/vim-racer'
-Bundle 'rust-lang/rust.vim'
-"Bundle 'Valloric/YouCompleteMe'
-"Bundle 'scrooloose/syntastic'
-"Bundle 'majutsushi/tagbar'
-
 "au BufRead,BufNewFile *.hpp set syntax=cpp.doxygen
 
 let g:rust_recommended_style = 0
