@@ -42,16 +42,16 @@ let g:ctrlp_extensions = ['tag']
 "autocmd FileType c,cpp,objc ClangFormatAutoEnable
 nmap <leader>m :ClangFormatAutoToggle<cr>
 nmap <leader>= :ClangFormat<cr>
-let g:clang_format#code_stype = "google"
+let g:clang_format#detect_style_file = 1
+let g:clang_format#code_style = "google"
 let g:clang_format#style_options = {
             \ "ColumnLimit" : 120,
             \ "IndentWidth" : 4,
-            \ "AccessModifierOffset" : -2,
-            \ "BreakBeforeBraces" : "Allman"}
-
-"            \ "AllowShortIfStatementsOnASingleLine" : "true",
-"            \ "AlwaysBreakTemplateDeclarations" : "true",
-"            \ "Standard" : "C++11",
+            \ "AccessModifierOffset" : -4,
+            \ "BreakBeforeBraces" : "Allman",
+            \ "AllowShortIfStatementsOnASingleLine" : "false",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "Cpp11"}
 
 "Look for ctags file
 set tags=$HOME/$CURRENTPROJ/.git/tags;/
@@ -60,36 +60,18 @@ set statusline=%<%F%{tagbar#currenttag(':%s','','')}\ %{fugitive#statusline()}%=
 """""""""""
 " Functions
 """""""""""
-"command -complete=file -nargs=+ F call GrepTCC(<f-args>)
-"function! GrepTCC(...)
-"  if a:0 == 1
-"    let flag=''
-"    let pattern=a:1
-"    "let directory='~/TCC_ER_CIS_SW'
-"    let directory=expand($HOME)."/".expand($CURRENTPROJ)
-"  elseif a:0 == 2
-"    if a:1 =~ '^-'
-"      let flag=a:1
-"      let pattern=a:2
-"      let directory=expand($HOME)."/".expand($CURRENTPROJ)
-"    else
-"      let flag=''
-"      let pattern=a:1
-"      let directory=a:2
-"    endif
-"  elseif a:0 == 3
-"    let flag=a:1
-"    let pattern=a:2
-"    let directory=a:3
-"  else
-"    return
-"  endif
-"
-"  "let directory=substitute(directory, '\~', '/home/jhogklin', 'ge')
-"
-"  exe 'Ack --type=cpp --ignore-dir=test --ignore-dir=Stubs --ignore-dir=Stubs2 --ignore-dir=stubs --ignore-dir=stubs2 ' . flag . ' ' . pattern . ' ' . expand(directory)
-"  cw 10
-"endfunction
+command Tse call TabSELinux()
+command Ctse call CleanTabSELinux()
+
+function! TabSELinux()
+    :Tabularize /}\|scontext[^ ]\+\|tcontext[^ ]\+\|tclass[^ ]\+/
+endfunction
+
+function! CleanTabSELinux()
+    :g!/avc.*denied/d
+    :%s/^.*denied //
+    :call TabSELinux()
+endfunction
 
 "function! SwitchTest()
 "  if @% =~ 'Test\.[ch]pp$'
