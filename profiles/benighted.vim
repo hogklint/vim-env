@@ -69,8 +69,9 @@ endfunction
 
 function! CleanTabSELinux()
     :g!/avc.*denied/d
-    :%s/^.*denied //
+    :%s/^.*denied *//
     :call TabSELinux()
+    :set nowrap
 endfunction
 
 "function! SwitchTest()
