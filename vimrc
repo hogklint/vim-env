@@ -257,7 +257,7 @@ set autoread
 "Set bg to dark
 set background=dark
 
-set wildignore+=*.o,*.obj,.git,*Test*,*.idl,*.xml
+set wildignore+=*.o,*.obj,.git,*.idl
 
 "Don't redraw while in marcro
 set lazyredraw
@@ -267,6 +267,8 @@ syntax enable
 
 "When .vimrc is edited, reload it
 autocmd! bufwritepost .vimrc source ~/.vimrc
+
+set diffopt+=algorithm:patience,indent-heuristic
 
 " Host specific config files
 let hostfile=$HOME."/.vim/profiles/".hostname().".vim"
