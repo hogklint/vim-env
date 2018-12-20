@@ -11,7 +11,7 @@ let g:ctrlp_max_height=40
 let g:ctrlp_switch_buffer=2
 let g:ctrlp_clear_cache_on_exit=0
 let g:ctrlp_dotfiles=0
-let g:ctrlp_custom_ignore='SunOS_i86pc$\|\.d$\|\.o$\|\.a$\|\.tcov$\|build$\|^test$\|\.orig$'
+let g:ctrlp_custom_ignore='\.d$\|\.o$\|\.a$\|\.tcov$\|build$\|^test$\|\.orig$'
 let g:ctrlp_lazy_update=0
 let g:ctrlp_prompt_mappings = {
  \ 'PrtSelectMove("j")':   ['<c-n>', '<down>'],
@@ -22,11 +22,24 @@ let g:ctrlp_prompt_mappings = {
  \ 'PrtClearCache()':      ['<F4>'],
  \ }
 
-nmap <leader>l :CtrlPBuffer<CR>
-nmap <leader>f :CtrlPBufTag<CR>
-nmap <leader>F :CtrlPTag<CR>
+"nmap <leader>l :CtrlPBuffer<CR>
+"nmap <leader>f :CtrlPBufTag<CR>
+"nmap <leader>F :CtrlPTag<CR>
 let g:ctrlp_extensions = ['tag']
 "nnoremap <silent> <c-p> :call fzf#run({ 'dir': expand($HOME) }/expand($CURRENTPROJ))<CR>
+
+""""""
+" FZF
+""""""
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+command! ProjectFiles execute 'Files' s:find_git_root()
+
+nnoremap <silent> <C-p> :ProjectFiles<CR>
+nnoremap <silent> <leader>l :Buffers<CR>
+nnoremap <silent> <leader>r :History<CR>
+nnoremap <silent> <leader>f :BTags<CR>
 
 """"""""""""""
 " Clang Format
@@ -54,6 +67,7 @@ set statusline=%<%F%{tagbar#currenttag(':%s','','')}\ %{fugitive#statusline()}%=
 """""""""""
 command Tse call TabSELinux()
 command Ctse call CleanTabSELinux()
+command Ctset call CleanTabSELinuxWithTime()
 
 function! TabSELinux()
     :Tabularize /}\|scontext[^ ]\+\|tcontext[^ ]\+\|tclass[^ ]\+/
@@ -61,16 +75,36 @@ endfunction
 
 function! CleanTabSELinux()
     :g!/avc.*denied/d
+
+    " Without monotonic time
     :%s/^.*denied *//
+
     :call TabSELinux()
     :set nowrap
 endfunction
 
+function! CleanTabSELinuxWithTime()
+    :g!/avc.*denied/d
+
+    " With monotonic time
+    :%s/^\s*\([0-9\.]\+\).*denied *\(.*\)/\1 \2/
+
+    :call TabSELinux()
+    :set nowrap
+endfunction
+
+function! MoveToBottom(pattern)
+    normal qkq
+    ":g/a:pattern/d K
+    execute "g/:". a:pattern. ":/d K"
+    normal G
+    normal p
+endfunction
+
 set makeprg=singlefile
-nmap <F6> :call SwitchStub()<CR>
-nmap <F7> :call SwitchTest()<CR>
-nmap <F9> :call BuildSubSystem("")<CR><CR>
-nmap <F10> :call BuildFile()<CR><CR>
+command -complete=file -nargs=+ MTB call MoveToBottom(<f-args>)
+vnoremap <F6> :MTB <cword><CR>
+nnoremap <F6> :MTB <cword><CR>
 
 set shiftwidth=4
 set softtabstop=4
