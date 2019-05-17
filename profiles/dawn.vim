@@ -63,6 +63,17 @@ set tags=$HOME/$CURRENTPROJ/.git/tags;/
 set statusline=%<%F%{tagbar#currenttag(':%s','','')}\ %{fugitive#statusline()}%=%([%M%R%H%W]\ %)%l,%c%V\ %P\ (%n)
 
 """""""""""
+" vim-lsp (Language Server Protocol)
+"""""""""""
+if executable('clangd')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd', '-background-index']},
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+        \ })
+endif
+
+"""""""""""
 " Functions
 """""""""""
 command Tse call TabSELinux()
