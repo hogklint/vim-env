@@ -40,6 +40,7 @@ nnoremap <silent> <C-p> :ProjectFiles<CR>
 nnoremap <silent> <leader>l :Buffers<CR>
 nnoremap <silent> <leader>r :History<CR>
 nnoremap <silent> <leader>f :BTags<CR>
+nnoremap <silent> q/ :History/<CR>
 
 """"""""""""""
 " Clang Format
@@ -98,7 +99,7 @@ function! CleanTabSELinuxWithTime()
     :g!/avc.*denied/d
 
     " With monotonic time
-    :%s/^\s*\([0-9\.]\+\).*denied *\(.*\)/\1 \2/
+    :%s/^\s*\([-0-9\.]\+\).*denied *\(.*\)/\1 \2/
 
     :call TabSELinux()
     :set nowrap
