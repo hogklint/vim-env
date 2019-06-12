@@ -1,5 +1,7 @@
 au BufRead,BufNewFile *.hpp set syntax=cpp.doxygen
 
+highligh CursorLine term=none cterm=none ctermbg=0
+
 """""""
 " CtrlP
 """""""
