@@ -2,33 +2,43 @@ au BufRead,BufNewFile *.hpp set syntax=cpp.doxygen
 
 highligh CursorLine term=none cterm=none ctermbg=0
 
-"""""""
-" CtrlP
-"""""""
-"let g:ctrlp_cmd="CtrlP ~/TCC_ER_CIS_SW"
-"let g:ctrlp_cmd="CtrlP ".expand($HOME)."/".expand($CURRENTPROJ)
-"let g:ctrlp_root_markers = ['build/.ctrlp']
-let g:ctrlp_root_markers = ['.git']
-let g:ctrlp_max_height=40
-let g:ctrlp_switch_buffer=2
-let g:ctrlp_clear_cache_on_exit=0
-let g:ctrlp_dotfiles=0
-let g:ctrlp_custom_ignore='\.d$\|\.o$\|\.a$\|\.tcov$\|build$\|^test$\|\.orig$'
-let g:ctrlp_lazy_update=0
-let g:ctrlp_prompt_mappings = {
- \ 'PrtSelectMove("j")':   ['<c-n>', '<down>'],
- \ 'PrtSelectMove("k")':   ['<c-p>', '<up>'],
- \ 'PrtHistory(-1)':       ['<down>'],
- \ 'PrtHistory(1)':        ['<up>'],
- \ 'AcceptSelection("e")': ['<c-j>', '<cr>', '<2-LeftMouse>'],
- \ 'PrtClearCache()':      ['<F4>'],
- \ }
+"""""
+" CoC
+"""""
+nmap <silent> gp <Plug>(coc-diagnostic-prev)
+nmap <silent> gn <Plug>(coc-diagnostic-next)
 
-"nmap <leader>l :CtrlPBuffer<CR>
-"nmap <leader>f :CtrlPBufTag<CR>
-"nmap <leader>F :CtrlPTag<CR>
-let g:ctrlp_extensions = ['tag']
-"nnoremap <silent> <c-p> :call fzf#run({ 'dir': expand($HOME) }/expand($CURRENTPROJ))<CR>
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+"autocmd CursorHold * silent call CocActionAsync('highlight')
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Use <c-space> to trigger completion.
+"inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 """"""
 " FZF
@@ -64,17 +74,6 @@ let g:clang_format#style_options = {
 "Look for ctags file
 set tags=$HOME/$CURRENTPROJ/.git/tags;/
 set statusline=%<%F%{tagbar#currenttag(':%s','','')}\ %{fugitive#statusline()}%=%([%M%R%H%W]\ %)%l,%c%V\ %P\ (%n)
-
-"""""""""""
-" vim-lsp (Language Server Protocol)
-"""""""""""
-if executable('clangd')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'clangd',
-        \ 'cmd': {server_info->['clangd', '-background-index']},
-        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-        \ })
-endif
 
 """""""""""
 " Functions
@@ -114,6 +113,10 @@ function! MoveToBottom(pattern)
     normal G
     normal p
 endfunction
+
+""""""
+" Misc
+""""""
 
 set makeprg=singlefile
 command -complete=file -nargs=+ MTB call MoveToBottom(<f-args>)
