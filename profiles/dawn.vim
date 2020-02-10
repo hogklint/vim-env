@@ -127,3 +127,6 @@ nnoremap <F6> :MTB <cword><CR>
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
+
+" Ignore whitespace
+set diffopt+=iwhiteall
