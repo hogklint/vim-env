@@ -101,6 +101,7 @@ autocmd VimLeave * call SetTitle("reset")
 "Set mapleader
 let mapleader = ","
 let g:mapleader = ","
+let maplocalleader = "-"
 
 "Undotree
 nmap <leader>u :UndotreeToggle<CR>
