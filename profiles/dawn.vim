@@ -84,7 +84,7 @@ command Ctse call CleanTabSELinux()
 command Ctset call CleanTabSELinuxWithTime()
 
 function! TabSELinux()
-    :Tabularize /}\|scontext[^ ]\+\|tcontext[^ ]\+\|tclass[^ ]\+/
+    :Tabularize /^ \+-\?\d\+\.\d\d\d\|{[^}]\+\|}\|scontext[^ ]\+\|tcontext[^ ]\+\|tclass[^ ]\+/
 endfunction
 
 function! CleanTabSELinux()
@@ -100,8 +100,8 @@ endfunction
 function! CleanTabSELinuxWithTime()
     :g!/avc.*denied/d
 
-    " With monotonic time
-    :%s/^\s*\([-0-9\.]\+\).*denied *\(.*\)/\1 \2/
+    " With monotonic or wall clock time
+    :%s/^\s*\(-\?[0-9\.]\+\|[0-1]\d-[0-3]\d [0-1]\d:[0-5]\d:[0-5]\d\.\d\d\d\).*denied *\(.*\)/\1 \2/
 
     :call TabSELinux()
     :set nowrap
