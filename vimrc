@@ -271,6 +271,10 @@ autocmd! bufwritepost .vimrc source ~/.vimrc
 
 set diffopt+=algorithm:patience,indent-heuristic
 
+" Spell check
+autocmd FileType markdown setlocal spell spelllang=en_us
+autocmd FileType gitcommit setlocal spell spelllang=en_us
+
 " Host specific config files
 let hostfile=$HOME."/.vim/profiles/".hostname().".vim"
 if filereadable(hostfile)
