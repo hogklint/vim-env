@@ -1,60 +1,5 @@
 au BufRead,BufNewFile *.hpp set syntax=cpp.doxygen
 
-highligh CursorLine term=none cterm=none ctermbg=0
-
-"""""
-" CoC
-"""""
-nmap <silent> gp <Plug>(coc-diagnostic-prev)
-nmap <silent> gn <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-"autocmd CursorHold * silent call CocActionAsync('highlight')
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-" Use <c-space> to trigger completion.
-"inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-""""""
-" FZF
-""""""
-function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
-command! ProjectFiles execute 'Files' s:find_git_root()
-
-nnoremap <silent> <C-p> :ProjectFiles<CR>
-nnoremap <silent> <leader>a :FZF $AOSP_HOME<CR>
-nnoremap <silent> <leader>l :Buffers<CR>
-nnoremap <silent> <leader>r :History<CR>
-nnoremap <silent> <leader>f :BTags<CR>
-nnoremap <silent> q/ :History/<CR>
-
 """"""""""""""
 " Clang Format
 """"""""""""""
@@ -127,6 +72,3 @@ nnoremap <F6> :MTB <cword><CR>
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-
-" Ignore whitespace
-set diffopt+=iwhiteall

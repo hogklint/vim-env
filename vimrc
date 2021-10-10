@@ -20,6 +20,12 @@ Plug 'nomme/QFixToggle'
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
 Plug 'chrisbra/vim-diff-enhanced'
+Plug 'MattesGroeger/vim-bookmarks'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'
 
 " Host specific plugins
 let hostfile=$HOME."/.vim/profiles/plug-".hostname().".vim"
@@ -38,6 +44,62 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 highlight BeyondEighty ctermbg=darkred guibg=darkred
 au BufWinEnter * let w:m1=matchadd('ExtraWhitespace', '\s\+$\| \+\ze\t', -1)
 au BufWinEnter *.cpp,*.hpp,Makefile,*.java,*.pl,*.py,*.c,*.h let w:m2=matchadd('BeyondEighty', '\%>120v.\+', -1)
+
+
+"""""
+" CoC
+"""""
+nmap <silent> gp <Plug>(coc-diagnostic-prev)
+nmap <silent> gn <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+"autocmd CursorHold * silent call CocActionAsync('highlight')
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" Use <c-space> to trigger completion.
+"inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+
+""""""
+" FZF
+""""""
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+command! ProjectFiles execute 'Files' s:find_git_root()
+
+nnoremap <silent> <C-p> :ProjectFiles<CR>
+nnoremap <silent> <leader>a :FZF $AOSP_HOME<CR>
+nnoremap <silent> <leader>l :Buffers<CR>
+nnoremap <silent> <leader>r :History<CR>
+nnoremap <silent> <leader>f :BTags<CR>
+nnoremap <silent> q/ :History/<CR>
+
 
 """"""""""""""""""""""""""""""
 " Functions
@@ -173,6 +235,7 @@ set laststatus=2
 "Format the statusline
 set statusline=%<%F\ %{fugitive#statusline()}%=%([%M%R%H%W]\ %)%l,%c%V\ %P\ (%n)
 
+highligh CursorLine term=none cterm=none ctermbg=0
 set cursorline
 set term=xterm
 
@@ -270,6 +333,9 @@ syntax enable
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
 set diffopt+=algorithm:patience,indent-heuristic
+
+" Ignore whitespace
+set diffopt+=iwhiteall
 
 " Spell check
 autocmd FileType markdown setlocal spell spelllang=en_us
