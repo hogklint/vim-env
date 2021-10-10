@@ -173,7 +173,7 @@ let g:undotree_SplitWidth=45
 " Fugitive
 nmap <leader>d :Gvdiff<CR>
 nmap <leader>s :Gstatus<CR>
-nmap <leader>b :Gblame -w -M<CR>
+nmap <leader>b :Git blame -w -M<CR>
 nmap <leader>e :Gedit<CR>
 nnoremap <f2> :Ggrep <cword> *<CR><CR>
 
