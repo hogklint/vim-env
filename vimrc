@@ -49,6 +49,7 @@ au BufWinEnter *.cpp,*.hpp,Makefile,*.java,*.pl,*.py,*.c,*.h let w:m2=matchadd('
 """""
 " CoC
 """""
+let g:coc_global_extensions = ["coc-pyright"]
 nmap <silent> gp <Plug>(coc-diagnostic-prev)
 nmap <silent> gn <Plug>(coc-diagnostic-next)
 
