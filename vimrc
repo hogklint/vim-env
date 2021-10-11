@@ -86,22 +86,6 @@ function! s:show_documentation()
 endfunction
 
 
-""""""
-" FZF
-""""""
-function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
-command! ProjectFiles execute 'Files' s:find_git_root()
-
-nnoremap <silent> <C-p> :ProjectFiles<CR>
-nnoremap <silent> <leader>a :FZF $AOSP_HOME<CR>
-nnoremap <silent> <leader>l :Buffers<CR>
-nnoremap <silent> <leader>r :History<CR>
-nnoremap <silent> <leader>f :BTags<CR>
-nnoremap <silent> q/ :History/<CR>
-
-
 """"""""""""""""""""""""""""""
 " Functions
 """"""""""""""""""""""""""""""
@@ -229,6 +213,27 @@ nmap <leader>n :cn<cr>
 nmap <leader>p :cp<cr>
 nmap <leader>c :cc<cr>
 nmap <leader>o :QFix<cr>
+
+
+""""""
+" FZF
+""""""
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+command! ProjectFiles execute 'Files' s:find_git_root()
+
+nnoremap <silent> <C-p> :ProjectFiles<CR>
+nnoremap <silent> <leader>a :FZF $AOSP_HOME<CR>
+nnoremap <silent> <leader>l :Buffers<CR>
+nnoremap <silent> <leader>r :History<CR>
+nnoremap <silent> <leader>f :BTags<CR>
+nnoremap <silent> q/ :History/<CR>
+
+
+"""""""""""""""
+" Misc settings
+"
 
 "Always show the statusline
 set laststatus=2
