@@ -69,6 +69,8 @@ command -complete=file -nargs=+ MTB call MoveToBottom(<f-args>)
 vnoremap <F6> :MTB <cword><CR>
 nnoremap <F6> :MTB <cword><CR>
 
+nnoremap <silent> <leader>a :FZF $AOSP_HOME<CR>
+
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4

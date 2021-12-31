@@ -224,7 +224,6 @@ endfunction
 command! ProjectFiles execute 'Files' s:find_git_root()
 
 nnoremap <silent> <C-p> :ProjectFiles<CR>
-nnoremap <silent> <leader>a :FZF $AOSP_HOME<CR>
 nnoremap <silent> <leader>l :Buffers<CR>
 nnoremap <silent> <leader>r :History<CR>
 nnoremap <silent> <leader>f :BTags<CR>
