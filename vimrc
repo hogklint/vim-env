@@ -43,7 +43,7 @@ call plug#end()
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 highlight BeyondEighty ctermbg=darkred guibg=darkred
 au BufWinEnter * let w:m1=matchadd('ExtraWhitespace', '\s\+$\| \+\ze\t', -1)
-au BufWinEnter *.cpp,*.hpp,Makefile,*.java,*.pl,*.py,*.c,*.h let w:m2=matchadd('BeyondEighty', '\%>120v.\+', -1)
+au BufWinEnter *.cpp,*.hpp,Makefile,*.java,*.pl,*.c,*.h let w:m2=matchadd('BeyondEighty', '\%>120v.\+', -1)
 
 
 """""
