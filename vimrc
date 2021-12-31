@@ -156,6 +156,7 @@ let g:undotree_SplitWidth=45
 
 " Fugitive
 nmap <leader>d :Gvdiff<CR>
+nmap <leader>dm :Gvdiff master...<CR>
 nmap <leader>s :Git<CR>
 nmap <leader>b :Git blame -w -M<CR>
 nmap <leader>e :Gedit<CR>
