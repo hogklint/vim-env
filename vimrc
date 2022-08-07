@@ -21,7 +21,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'MattesGroeger/vim-bookmarks'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+if executable('node')
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
