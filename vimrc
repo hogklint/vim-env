@@ -21,6 +21,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'markonm/traces.vim'
 if executable('node')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
