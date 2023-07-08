@@ -1,21 +1,7 @@
 "set nocompatible               " be iMproved
 filetype off                   " required!
 
-"set rtp+=~/.vim/bundle/vundle/
-"call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-"Bundle 'gmarik/vundle'
-
-"Bundle 'mileszs/ack.vim'
-"Bundle 'vim-scripts/QFixToggle'
-"Bundle 'tpope/vim-fugitive'
-"Bundle 'mbbill/undotree'
-"Bundle 'chrisbra/vim-diff-enhanced'
-
 call plug#begin('~/.vim/bundle')
-Plug 'mileszs/ack.vim'
 Plug 'nomme/QFixToggle'
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
