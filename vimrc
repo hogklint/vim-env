@@ -133,6 +133,16 @@ endfunction
 autocmd BufEnter * call SetTitle("set")
 autocmd VimLeave * call SetTitle("reset")
 
+function! s:diff_primary_branch()
+  let b = system('git show origin/master 2> /dev/null')
+  if v:shell_error == 0
+    :Gvdiff origin/master...
+  else
+    :Gvdiff origin/main...
+  endif
+endfunction
+
+
 """"""""""""""""""""""
 " Custom key mappings
 """"""""""""""""""""""
@@ -148,7 +158,7 @@ let g:undotree_SplitWidth=45
 
 " Fugitive
 nmap <leader>d :Gvdiff<CR>
-nmap <leader>dm :Gvdiff origin/master...<CR>
+nmap <leader>dm :call <SID>diff_primary_branch()<CR>
 nmap <leader>s :Git<CR>
 nmap <leader>b :Git blame -w -M<CR>
 nmap <leader>e :Gedit<CR>
