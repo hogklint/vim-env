@@ -4,6 +4,7 @@ hi DiffText   cterm=none ctermfg=Red ctermbg=black
 
 let g:vimspector_enable_mappings = 'HUMAN'
 nmap <leader><f3> :VimspectorReset<CR>
+nmap <leader><f4> :call vimspector#LaunchWithSettings({'configuration': 'single-pytest', 'Function': CocAction('getCurrentFunctionSymbol')})<CR>
 "    F5	  VimspectorContinue
 "    F3	  VimspectorStop
 "    F4	  VimspectorRestart
