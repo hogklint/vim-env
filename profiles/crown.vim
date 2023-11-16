@@ -18,3 +18,9 @@ nmap <leader><f4> :call vimspector#LaunchWithSettings({'configuration': 'single-
 "    F12	VimspectorStepOut
 
 set textwidth=120
+
+let g:black_use_virtualenv = 1
+augroup black_on_save
+  autocmd!
+  autocmd BufWritePre *.py Black
+augroup end
