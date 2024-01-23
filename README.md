@@ -1,4 +1,4 @@
-nomme-vim-env
+vim-env
 =============
 
 My vim environment
