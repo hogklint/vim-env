@@ -2,6 +2,7 @@
 hi DiffChange cterm=none ctermfg=none ctermbg=none
 hi DiffText   cterm=none ctermfg=Red ctermbg=black
 
+if !has('nvim')
 let g:vimspector_enable_mappings = 'HUMAN'
 nmap <leader><f3> :VimspectorReset<CR>
 nmap <leader><f4> :call vimspector#LaunchWithSettings({'configuration': 'single-pytest', 'Function': CocAction('getCurrentFunctionSymbol')})<CR>
@@ -16,6 +17,7 @@ nmap <leader><f4> :call vimspector#LaunchWithSettings({'configuration': 'single-
 "    F10	VimspectorStepOver
 "    F11	VimspectorStepInto
 "    F12	VimspectorStepOut
+endif
 
 set textwidth=120
 
