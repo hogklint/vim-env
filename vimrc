@@ -83,27 +83,6 @@ endif
 """"""""""""""""""""""""""""""
 " Functions
 """"""""""""""""""""""""""""""
-" Switch between cpp source and header
-function! SwitchSourceHeader()
-   if (expand ("%:e") == "cpp" || expand ("%:e") == "c")
-     if filereadable(expand("%:r").".hpp")
-      find %:r.hpp
-     elseif filereadable(expand("%:r").".h")
-       find %:r.h
-     else
-       echo "No h/hpp file found"
-     endif
-   elseif (expand ("%:e") == "hpp" || expand ("%:e") == "h")
-     if filereadable(expand("%:r").".cpp")
-       find %:r.cpp
-     elseif filereadable(expand("%:r").".c")
-       find %:r.c
-     else
-       echo "No c/cpp file found"
-     endif
-   endif
-endfunction
-
 " Search from visual mode
 function! VisualSearch(direction) range
     let l:saved_reg = @"
@@ -166,9 +145,7 @@ nmap <leader>b :Git blame -w -M<CR>
 nmap <leader>e :Gedit<CR>
 nnoremap <f2> :Ggrep <cword> *<CR><CR>
 
-
 map <F1> :Explore<cr>
-nmap <F5> :call SwitchSourceHeader()<CR>
 "map <F8> :set nowrap!<CR>
 " Print current highlight element
 map <F8> :echo synIDattr(synID(line("."),col("."),1),"name")<cr>
