@@ -41,7 +41,7 @@ au BufWinEnter *.cpp,*.hpp,Makefile,*.java,*.pl,*.c,*.h let w:m2=matchadd('Beyon
 " CoC
 """""
 if executable('node')
-  let g:coc_global_extensions = ["coc-pyright"]
+  let g:coc_global_extensions = ["coc-pyright", "coc-java", "coc-json"]
   nmap <silent> gp <Plug>(coc-diagnostic-prev)
   nmap <silent> gn <Plug>(coc-diagnostic-next)
 
