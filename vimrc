@@ -245,7 +245,7 @@ set statusline=%<%F\ %{fugitive#statusline()}%=%([%M%R%H%W]\ %)%l,%c%V\ %P\ (%n)
 
 highligh CursorLine term=none cterm=none ctermbg=0
 set cursorline
-set term=xterm
+"set term=xterm
 
 "Turn backup off
 set nobackup
