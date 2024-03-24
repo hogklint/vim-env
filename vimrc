@@ -243,7 +243,7 @@ nnoremap <silent> q/ :History/<CR>
 set laststatus=2
 
 "Format the statusline
-set statusline=%<%F\ %{fugitive#statusline()}%=%([%M%R%H%W]\ %)%l,%c%V\ %P\ (%n)
+set statusline=%<%F\ %{fugitive#statusline()}\ %{coc#status()}%=%([%M%R%H%W]\ %)%l,%c%V\ %P\ (%n)
 
 highligh CursorLine term=none cterm=none ctermbg=0
 set cursorline
