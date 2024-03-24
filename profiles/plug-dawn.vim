@@ -1,5 +1,0 @@
-Plug 'rhysd/vim-clang-format'
-Plug 'majutsushi/tagbar'
-Plug 'lzap/vim-selinux'
-Plug 'godlygeek/tabular'
-Plug 'udalov/kotlin-vim'
