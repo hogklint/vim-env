@@ -1,5 +1,15 @@
 {
     "suggest.noselect": true,
+    "semanticTokens.enable": false,
+    "codeLens.enable": false,
+    "java.import.gradle.java.home": "/usr/lib/jvm/java-17-openjdk",
+    "java.configuration.runtimes": [
+      {
+        "name": "JavaSE-17",
+        "path": "/usr/lib/jvm/java-17-openjdk",
+        "default": true
+      }
+    ],
     "languageserver": {
         "clangd": {
             "command": "clangd",
