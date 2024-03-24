@@ -263,6 +263,7 @@ set softtabstop=2
 set tabstop=2
 set smarttab
 set expandtab
+autocmd BufEnter *.go set noexpandtab
 
 set autoindent
 set smartindent
