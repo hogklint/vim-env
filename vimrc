@@ -24,9 +24,11 @@ endif
 
 call plug#end()
 
+if !has('nvim')
 "Enable filetype plugin
 "filetype plugin on
 "filetype indent on
+endif
 
 " Highlight whitespace and long lines
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
