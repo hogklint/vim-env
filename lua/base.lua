@@ -34,4 +34,12 @@ vim.keymap.set("n", "<leader><CR>", ":noh<CR>", {silent = true})
 vim.keymap.set("i", "<leader>p", '<C-R>"')
 
 -- Quickfix shortcuts
--- vim.keymap.set("n", "<leader>o", ":QFix<CR>")
+vim.keymap.set("n", "<leader>n", ":cn<CR>")
+vim.keymap.set("n", "<leader>p", ":cp<CR>")
+vim.keymap.set("n", "<leader>c", ":cc<CR>")
+
+-- Always show the statusline
+vim.opt.laststatus = 2
+
+-- Format the statusline
+-- vim.opt.statusline= "%<%F\ %{fugitive#statusline()}%=%([%M%R%H%W]\ %)%l,%c%V\ %P\ (%n)"

@@ -4,7 +4,8 @@ vim.call("plug#begin")
 -- Autocomplete nvim config
 Plug("folke/neodev.nvim")
 -- Plug("junegunn/vim-easy-align")
--- Plug("nomme/QFixToggle")
+-- replace with stevearc/qf_helper.nvim?
+Plug("hogklint/QFixToggle")
 Plug("tpope/vim-fugitive")
 Plug("mbbill/undotree")
 Plug("chrisbra/vim-diff-enhanced")
@@ -36,3 +37,7 @@ vim.keymap.set("n", "<leader>s", ":Git<CR>", {silent = true})
 vim.keymap.set("n", "<leader>b", ":Git blame -w -M<CR>", {silent = true})
 vim.keymap.set("n", "<leader>e", ":Gedit<CR>", {silent = true})
 --vim.keymap.set("n", "<f2>", ":Ggrep <cword> *<CR><CR>", {silent = true})
+
+
+-- QFix
+vim.keymap.set("n", "<leader>o", ":QFix<CR>")
