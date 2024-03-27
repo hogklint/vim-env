@@ -7,7 +7,7 @@ Plug("folke/neodev.nvim")
 -- Plug("nomme/QFixToggle")
 Plug("tpope/vim-fugitive")
 Plug("mbbill/undotree")
--- Plug("chrisbra/vim-diff-enhanced")
+Plug("chrisbra/vim-diff-enhanced")
 -- Plug("MattesGroeger/vim-bookmarks")
 -- Plug("markonm/traces.vim")
 -- if vim.fn.executable("node") == 1 then
