@@ -1,6 +1,7 @@
 local conf_files = {
   "base.lua",
   "plugins.lua",
+  "statusline.lua",
 }
 
 local viml_conf_dir = vim.fn.stdpath("config") .. "/viml_conf"

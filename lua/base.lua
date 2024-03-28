@@ -40,6 +40,3 @@ vim.keymap.set("n", "<leader>c", ":cc<CR>")
 
 -- Always show the statusline
 vim.opt.laststatus = 2
-
--- Format the statusline
--- vim.opt.statusline= "%<%F\ %{fugitive#statusline()}%=%([%M%R%H%W]\ %)%l,%c%V\ %P\ (%n)"
