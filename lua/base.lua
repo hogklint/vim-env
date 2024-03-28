@@ -39,4 +39,41 @@ vim.keymap.set("n", "<leader>p", ":cp<CR>")
 vim.keymap.set("n", "<leader>c", ":cc<CR>")
 
 -- Always show the statusline
-vim.opt.laststatus = 2
+vim.o.laststatus = 2
+
+-- Cursor
+vim.o.cursorline = true
+vim.api.nvim_set_hl(0, "CursorLine", {ctermbg=0, cterm=nil, term=nil})
+
+-- Turn backup off
+vim.o.nobackup = true
+vim.o.nowritebackup = true
+vim.o.noswapfile = true
+vim.o.noautoread = true
+
+-- No folds
+vim.o.nofoldenable = true
+
+-- Set tab behaviour
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
+vim.o.tabstop = 2
+vim.o.smarttab = true
+vim.o.autoindent = true
+vim.o.smartindent = true
+-- C-style indeting
+vim.o.cindent = true
+-- Tabs in Go
+vim.o.expandtab = true
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = "*.go",
+  command = "set noexpandtab",
+})
+
+-- Line numbers
+vim.o.number = true
+vim.o.relativenumber = true
+
+-- Prefer unix format
+vim.opt.fileformats = {"unix", "dos"}
+
