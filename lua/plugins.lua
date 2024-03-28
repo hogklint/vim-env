@@ -3,22 +3,19 @@ local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 -- Autocomplete nvim config
 Plug("folke/neodev.nvim")
--- Plug("junegunn/vim-easy-align")
 -- replace with stevearc/qf_helper.nvim?
 Plug("hogklint/QFixToggle")
 Plug("tpope/vim-fugitive")
 Plug("mbbill/undotree")
 Plug("chrisbra/vim-diff-enhanced")
--- Plug("MattesGroeger/vim-bookmarks")
--- Plug("markonm/traces.vim")
+Plug("MattesGroeger/vim-bookmarks")
 -- if vim.fn.executable("node") == 1 then
 --   Plug("neoclide/coc.nvim", {["branch"] = "release"})
 -- end
--- 
 Plug("junegunn/fzf", { ["dir"] = "~/.fzf", ["do"] = "./install --all" })
 Plug("junegunn/fzf.vim")
 Plug("m4xshen/smartcolumn.nvim")
--- Plug("airblade/vim-rooter")
+Plug("airblade/vim-rooter")
 vim.call("plug#end")
 
 -- FZF
@@ -48,3 +45,13 @@ vim.keymap.set("n", "<leader>o", ":QFix<CR>")
 require("smartcolumn").setup(
   {colorcolumn = "120", disabled_filetypes = {"help", "text"}}
 )
+
+-- vim-bookmarks
+-- Default keymaps
+-- mm: new
+-- mi: new with annotation
+-- mn: goto next
+-- mp: goto previous
+-- ma: list
+-- mc: clear bufffer
+-- mx: clear all
