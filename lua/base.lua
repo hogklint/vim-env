@@ -19,7 +19,7 @@ vim.keymap.set("n", "k", "gk")
 vim.keymap.set("n", "<space>", "/\\v")
 
 -- Save the thing
-vim.keymap.set("n", "<leader>w", ":w!<CR>")
+vim.keymap.set("n", "<leader>w", ":w<CR>")
 
 -- Split navigation
 vim.keymap.set("n", "<C-j>", "<C-w>j")
