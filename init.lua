@@ -1,5 +1,6 @@
 local conf_files = {
-  "base.lua",
+  "settings.lua",
+  "keymaps.lua",
   "plugins.lua",
   "statusline.lua",
 }
