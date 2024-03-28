@@ -43,7 +43,12 @@ vim.o.laststatus = 2
 
 -- Cursor
 vim.o.cursorline = true
-vim.api.nvim_set_hl(0, "CursorLine", {ctermbg=0, cterm=nil, term=nil})
+vim.api.nvim_set_hl(0, "CursorLine", {ctermbg=0})
+
+-- Color column
+vim.api.nvim_set_hl(0, "ColorColumn", {ctermbg="magenta"})
+-- Using smartcolumn plugin instead of static value
+-- vim.o.colorcolumn = "120"
 
 -- Turn backup off
 vim.o.nobackup = true

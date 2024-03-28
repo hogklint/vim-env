@@ -17,6 +17,7 @@ Plug("chrisbra/vim-diff-enhanced")
 -- 
 Plug("junegunn/fzf", { ["dir"] = "~/.fzf", ["do"] = "./install --all" })
 Plug("junegunn/fzf.vim")
+Plug("m4xshen/smartcolumn.nvim")
 -- Plug("airblade/vim-rooter")
 vim.call("plug#end")
 
@@ -41,3 +42,9 @@ vim.keymap.set("n", "<leader>e", ":Gedit<CR>", {silent = true})
 
 -- QFix
 vim.keymap.set("n", "<leader>o", ":QFix<CR>")
+
+
+-- Smartcolumn (colorcolumn)
+require("smartcolumn").setup(
+  {colorcolumn = "120", disabled_filetypes = {"help", "text"}}
+)
