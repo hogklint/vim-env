@@ -18,6 +18,10 @@ Plug("m4xshen/smartcolumn.nvim")
 Plug("airblade/vim-rooter")
 Plug("godlygeek/tabular")
 Plug("averms/black-nvim", {["do"] = ":UpdateRemotePlugins"})
+Plug("bergercookie/vim-debugstring")
+-- Enable repeat of vim-debugstring by pressing period
+Plug("tpope/vim-repeat")
+Plug("hashivim/vim-terraform")
 vim.call("plug#end")
 
 -- FZF
@@ -76,3 +80,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- number: padding
 --
 -- E:g. r0 or l8 or r0c5
+
+-- vim-debugstring
+-- Default keymaps
+-- <leader>ds: normal print
+-- <leader>dS: print with expression
+-- <leader>DS: print with c-expression
