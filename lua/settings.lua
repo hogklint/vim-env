@@ -82,3 +82,6 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   pattern = "*",
   command = "let w:m1=matchadd('ExtraWhitespace', '\\s\\+$\\| \\+\\ze\\t', -1)",
 })
+
+-- This is where pynvim and black is installed. Not sure how that works with a per-project venv
+vim.g.python3_host_prog = "/home/jhogklint/.local/venv/nvim/bin/python"

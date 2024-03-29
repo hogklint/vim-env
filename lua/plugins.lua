@@ -16,6 +16,8 @@ Plug("junegunn/fzf", { ["dir"] = "~/.fzf", ["do"] = "./install --all" })
 Plug("junegunn/fzf.vim")
 Plug("m4xshen/smartcolumn.nvim")
 Plug("airblade/vim-rooter")
+Plug("godlygeek/tabular")
+Plug("averms/black-nvim", {["do"] = ":UpdateRemotePlugins"})
 vim.call("plug#end")
 
 -- FZF
@@ -46,6 +48,14 @@ require("smartcolumn").setup(
   {colorcolumn = "120", disabled_filetypes = {"help", "text"}}
 )
 
+
+-- Python Black
+-- The plugin uses nvim's python env (see vim.g.python3_host_prog)
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.py",
+  command = "call BlackSync()",
+})
+
 -- vim-bookmarks
 -- Default keymaps
 -- mm: new
@@ -55,3 +65,14 @@ require("smartcolumn").setup(
 -- ma: list
 -- mc: clear bufffer
 -- mx: clear all
+
+-- Tabular usage:
+-- :Tabularize /<pattern>/<format>
+--
+-- Formats:
+-- l: left alignment
+-- r: right alignment
+-- c: center alignment
+-- number: padding
+--
+-- E:g. r0 or l8 or r0c5
