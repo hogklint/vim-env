@@ -1,6 +1,43 @@
 vim.g.mapleader = ","
 vim.g.maplocalleader = "-"
 
+-- Always show the statusline
+vim.o.laststatus = 2
+
+-- Cursor
+vim.o.cursorline = true
+vim.api.nvim_set_hl(0, "CursorLine", {ctermbg=0})
+
+-- Color column
+vim.api.nvim_set_hl(0, "ColorColumn", {ctermbg="magenta"})
+-- Using smartcolumn plugin instead of static value
+-- vim.o.colorcolumn = "120"
+
+-- Turn backup off
+vim.o.nobackup = true
+vim.o.nowritebackup = true
+vim.o.noswapfile = true
+vim.o.noautoread = true
+
+-- No folds
+vim.o.nofoldenable = true
+
+-- Set tab behaviour
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
+vim.o.tabstop = 2
+vim.o.smarttab = true
+vim.o.autoindent = true
+vim.o.smartindent = true
+-- C-style indeting
+vim.o.cindent = true
+-- Tabs in Go
+vim.o.expandtab = true
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = "*.go",
+  command = "set noexpandtab",
+})
+
 -- Line numbers
 vim.o.number = true
 vim.o.relativenumber = true
