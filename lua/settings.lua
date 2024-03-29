@@ -14,13 +14,13 @@ vim.api.nvim_set_hl(0, "ColorColumn", {ctermbg="magenta"})
 -- vim.o.colorcolumn = "120"
 
 -- Turn backup off
-vim.o.nobackup = true
-vim.o.nowritebackup = true
-vim.o.noswapfile = true
-vim.o.noautoread = true
+vim.o.backup = false
+vim.o.writebackup = false
+vim.o.swapfile = false
+vim.o.autoread = false
 
 -- No folds
-vim.o.nofoldenable = true
+vim.o.foldenable = false
 
 -- Set tab behaviour
 vim.o.shiftwidth = 2
@@ -52,8 +52,8 @@ vim.o.lazyredraw = true
 vim.o.magic = true
 
 -- No sound on errors
-vim.o.noerrorbells = true
-vim.o.novisualbell = true
+vim.o.errorbells = false
+vim.o.visualbell = false
 
 -- Briefly jump to matching bracket
 vim.o.showmatch = true
