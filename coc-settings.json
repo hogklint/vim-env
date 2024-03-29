@@ -1,5 +1,6 @@
 {
     "suggest.noselect": true,
+    "inlayHint.enable": false,
     "semanticTokens.enable": false,
     "codeLens.enable": false,
     "java.import.gradle.java.home": "/usr/lib/jvm/java-17-openjdk",
