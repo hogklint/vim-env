@@ -2,6 +2,7 @@ local conf_files = {
   "settings.lua",
   "keymaps.lua",
   "plugins.lua",
+  "lsp.lua",
   "statusline.lua",
 }
 

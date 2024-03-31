@@ -22,6 +22,7 @@ Plug("bergercookie/vim-debugstring")
 -- Enable repeat of vim-debugstring by pressing period
 Plug("tpope/vim-repeat")
 Plug("hashivim/vim-terraform")
+Plug("neovim/nvim-lspconfig")
 vim.call("plug#end")
 
 -- FZF
