@@ -14,6 +14,7 @@ Plug("MattesGroeger/vim-bookmarks")
 -- end
 Plug("junegunn/fzf", { ["dir"] = "~/.fzf", ["do"] = "./install --all" })
 Plug("junegunn/fzf.vim")
+-- Color column when max width is reached
 Plug("m4xshen/smartcolumn.nvim")
 Plug("airblade/vim-rooter")
 Plug("godlygeek/tabular")
@@ -23,6 +24,9 @@ Plug("bergercookie/vim-debugstring")
 Plug("tpope/vim-repeat")
 Plug("hashivim/vim-terraform")
 Plug("neovim/nvim-lspconfig")
+-- JSON and YAML schemas
+Plug("b0o/schemastore.nvim")
+Plug("towolf/vim-helm")
 vim.call("plug#end")
 
 -- FZF
