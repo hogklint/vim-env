@@ -13,8 +13,8 @@ vim.keymap.set("n", "<F1>", ":Explore<CR>")
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 
--- Search with very magic (pure regex)
-vim.keymap.set("n", "<space>", "/\\v")
+-- Fast search
+vim.keymap.set("n", "<space>", "/")
 
 -- Save the thing
 vim.keymap.set("n", "<leader>w", ":w<CR>")
