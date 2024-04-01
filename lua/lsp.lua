@@ -1,6 +1,7 @@
-require("lspconfig").pyright.setup{}
-require("lspconfig").gopls.setup{}
-require("lspconfig").golangci_lint_ls.setup{}
+require("lspconfig").pyright.setup {}
+require("lspconfig").gopls.setup {}
+require("lspconfig").golangci_lint_ls.setup {}
+require("lspconfig").lua_ls.setup {}
 require("lspconfig").jsonls.setup {
   settings = {
     json = {
@@ -38,6 +39,17 @@ require("lspconfig").helm_ls.setup {
 -- https://github.com/mrjosh/helm-ls/issues/44
 -- require("lspconfig").yamlls.setup{}
 
+
+require("lsp_signature").setup({})
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+lsps = { "pyright", "gopls", "lua_ls" "jsonls", "helm_ls" }
+for i, lsp in ipairs(lsps) do
+  require("lspconfig")[lsp].setup {
+    capabilities = capabilities
+  }
+end
+
+
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "gn", vim.diagnostic.goto_next)
 vim.keymap.set("n", "gp", vim.diagnostic.goto_prev)
@@ -62,12 +74,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- vim.keymap.set("n", "<space>wl", function()
     --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     -- end, opts)
-    --vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+    -- vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
     vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
     vim.keymap.set("n", "<space>f", function()
       vim.lsp.buf.format { async = true }
     end, opts)
+    -- local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    -- if client.server_capabilities.hoverProvider then
+    --   vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
+    -- end
   end,
 })

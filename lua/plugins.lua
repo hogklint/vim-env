@@ -1,32 +1,46 @@
 local Plug = vim.fn["plug#"]
 
 vim.call("plug#begin")
--- Autocomplete nvim config
-Plug("folke/neodev.nvim")
 -- replace with stevearc/qf_helper.nvim?
 Plug("hogklint/QFixToggle")
 Plug("tpope/vim-fugitive")
 Plug("mbbill/undotree")
 Plug("chrisbra/vim-diff-enhanced")
 Plug("MattesGroeger/vim-bookmarks")
--- if vim.fn.executable("node") == 1 then
---   Plug("neoclide/coc.nvim", {["branch"] = "release"})
--- end
 Plug("junegunn/fzf", { ["dir"] = "~/.fzf", ["do"] = "./install --all" })
 Plug("junegunn/fzf.vim")
--- Color column when max width is reached
-Plug("m4xshen/smartcolumn.nvim")
 Plug("airblade/vim-rooter")
 Plug("godlygeek/tabular")
 Plug("averms/black-nvim", {["do"] = ":UpdateRemotePlugins"})
 Plug("bergercookie/vim-debugstring")
+Plug("hashivim/vim-terraform")
+--
+-- Autocomplete nvim config
+Plug("folke/neodev.nvim")
+
 -- Enable repeat of vim-debugstring by pressing period
 Plug("tpope/vim-repeat")
-Plug("hashivim/vim-terraform")
-Plug("neovim/nvim-lspconfig")
+
+-- Color column when max width is reached
+Plug("m4xshen/smartcolumn.nvim")
+
 -- JSON and YAML schemas
 Plug("b0o/schemastore.nvim")
 Plug("towolf/vim-helm")
+
+-- LSP and auto complete stuff
+Plug("neovim/nvim-lspconfig")
+Plug("hrsh7th/nvim-cmp")
+Plug("hrsh7th/cmp-nvim-lsp")
+Plug 'hrsh7th/cmp-path'
+-- Plug 'hrsh7th/cmp-buffer'
+-- Plug 'hrsh7th/cmp-cmdline'
+-- Insert auto complete with snipet plugin
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+-- Show function signatures as your call them
+Plug("ray-x/lsp_signature.nvim")
+
 vim.call("plug#end")
 
 -- FZF
@@ -64,6 +78,58 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.py",
   command = "call BlackSync()",
 })
+
+
+--
+-- nvim-cmp
+--
+local cmp = require("cmp")
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  window = {
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    -- The <Tab> and <S-Tab> mapping functions mirror the behaviour of Super-Tab i.e. auto-complete when tabbing instead
+    -- of just moving in the list and then auto-complete with <CR>
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif vim.fn["vsnip#available"](1) == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+      end
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+        feedkey("<Plug>(vsnip-jump-prev)", "")
+      end
+    end, { "i", "s" }),
+    --["<C-Space>"] = cmp.mapping.complete(),
+    --["<C-e>"] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["<C-j>"] = cmp.mapping.confirm({ select = true }),
+  }),
+  sources = cmp.config.sources({
+    { name = "nvim_lsp" },
+    { name = "vsnip" },
+  }, {
+    { name = "buffer" },
+  }),
+  preselect = cmp.PreselectMode.None,
+})
+
 
 -- vim-bookmarks
 -- Default keymaps
