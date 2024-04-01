@@ -42,7 +42,7 @@ require("lspconfig").helm_ls.setup {
 
 require("lsp_signature").setup({})
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-lsps = { "pyright", "gopls", "lua_ls" "jsonls", "helm_ls" }
+lsps = { "pyright", "gopls", "lua_ls", "jsonls", "helm_ls" }
 for i, lsp in ipairs(lsps) do
   require("lspconfig")[lsp].setup {
     capabilities = capabilities
@@ -54,6 +54,11 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "gn", vim.diagnostic.goto_next)
 vim.keymap.set("n", "gp", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setqflist)
+
+--
+-- Mapping for filetype to pattern used to activate automatic formatting on save
+--
+fts = { lua = "*.lua", go = "*.go" }
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -75,15 +80,27 @@ vim.api.nvim_create_autocmd("LspAttach", {
     --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     -- end, opts)
     -- vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<leader>a", vim.lsp.buf.rename, opts)
     vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-    vim.keymap.set("n", "<space>f", function()
+    vim.keymap.set("n", "<leader>g", function()
       vim.lsp.buf.format { async = true }
     end, opts)
-    -- local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    -- if client.server_capabilities.hoverProvider then
-    --   vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
-    -- end
+
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    patterns = {}
+    for i, ft in ipairs(client.config.filetypes) do
+      if fts[ft] ~= nil then
+        table.insert(patterns, fts[ft])
+      end
+    end
+    if client.server_capabilities.documentFormattingProvider and next(patterns) ~= nil then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = patterns,
+        callback = function()
+          vim.lsp.buf.format { async = false }
+        end
+      })
+    end
   end,
 })
