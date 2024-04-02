@@ -58,7 +58,7 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setqflist)
 --
 -- Mapping for filetype to pattern used to activate automatic formatting on save
 --
-fts = { lua = "*.lua", go = "*.go" }
+fts = { lua = "*.lua", go = "*.go", json = "*.json"}
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
