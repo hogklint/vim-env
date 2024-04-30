@@ -56,6 +56,9 @@ vim.keymap.set("n", "gn", vim.diagnostic.goto_next)
 vim.keymap.set("n", "gp", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setqflist)
 
+-- clangd switch source/header
+vim.keymap.set("n", "<F5>", ":ClangdSwitchSourceHeader<CR>")
+
 --
 -- Mapping for filetype to pattern used to activate automatic formatting on save
 --
