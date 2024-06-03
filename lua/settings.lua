@@ -38,6 +38,9 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
   command = "set noexpandtab",
 })
 
+-- Line wrap length (when using `gq`)
+vim.o.textwidth = 120
+
 -- Line numbers
 vim.o.number = true
 vim.o.relativenumber = true
