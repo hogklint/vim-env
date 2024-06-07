@@ -81,6 +81,7 @@ end
 
 -- Highlight trailing whitespace
 vim.o.list = true
+vim.opt.listchars = { tab = "  ", trail = "-", nbsp = "+" }
 vim.api.nvim_set_hl(0, "ExtraWhitespace", { ctermbg = "darkgreen" })
 vim.api.nvim_create_autocmd("BufWinEnter", {
   pattern = "*",
