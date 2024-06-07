@@ -64,6 +64,12 @@ vim.keymap.set("n", "<F5>", ":ClangdSwitchSourceHeader<CR>")
 --
 fts = { lua = "*.lua", go = "*.go", json = "*.json" }
 
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = "rounded"
+  }
+)
+
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
