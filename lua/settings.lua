@@ -6,10 +6,10 @@ vim.o.laststatus = 2
 
 -- Cursor
 vim.o.cursorline = true
-vim.api.nvim_set_hl(0, "CursorLine", {ctermbg=0})
+vim.api.nvim_set_hl(0, "CursorLine", { ctermbg = 0 })
 
 -- Color column
-vim.api.nvim_set_hl(0, "ColorColumn", {ctermbg="magenta"})
+vim.api.nvim_set_hl(0, "ColorColumn", { ctermbg = "magenta" })
 -- Using smartcolumn plugin instead of static value
 -- vim.o.colorcolumn = "120"
 
@@ -33,7 +33,7 @@ vim.o.smartindent = true
 vim.o.cindent = true
 -- Tabs in Go
 vim.o.expandtab = true
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   pattern = "*.go",
   command = "set noexpandtab",
 })
@@ -66,12 +66,12 @@ vim.o.matchtime = 3
 vim.o.history = 400
 
 -- Files to ignore when using wildcars
-vim.opt.wildignore = {"*.o", "*.obj", ".git", "*.idl"}
+vim.opt.wildignore = { "*.o", "*.obj", ".git", "*.idl" }
 
-vim.opt.diffopt = {"algorithm:patience", "indent-heuristic", "iwhiteall"}
+--vim.opt.diffopt = {"algorithm:patience", "indent-heuristic", "iwhiteall"}
 
 -- Spell check on file types
-ftypes = {"markdown", "gitcommit"}
+ftypes = { "markdown", "gitcommit" }
 for i, ftype in ipairs(ftypes) do
   vim.api.nvim_create_autocmd("FileType", {
     pattern = ftype,
@@ -80,7 +80,8 @@ for i, ftype in ipairs(ftypes) do
 end
 
 -- Highlight trailing whitespace
-vim.api.nvim_set_hl(0, "ExtraWhitespace", {ctermbg="darkgreen"})
+vim.o.list = true
+vim.api.nvim_set_hl(0, "ExtraWhitespace", { ctermbg = "darkgreen" })
 vim.api.nvim_create_autocmd("BufWinEnter", {
   pattern = "*",
   command = "let w:m1=matchadd('ExtraWhitespace', '\\s\\+$\\| \\+\\ze\\t', -1)",
