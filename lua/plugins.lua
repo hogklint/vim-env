@@ -25,6 +25,7 @@ Plug("godlygeek/tabular")
 Plug("averms/black-nvim", { ["do"] = ":UpdateRemotePlugins" })
 Plug("bergercookie/vim-debugstring")
 Plug("hashivim/vim-terraform")
+Plug("github/copilot.vim")
 
 -- Color scheme
 --Plug("rebelot/kanagawa.nvim")
@@ -161,6 +162,15 @@ cmp.setup({
   }),
   preselect = cmp.PreselectMode.None,
 })
+
+--
+-- Copilot
+--
+vim.keymap.set('i', '<C-l>', 'copilot#Accept("\\<C-l>")', {
+  expr = true,
+  replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true
 
 
 -- vim-bookmarks
