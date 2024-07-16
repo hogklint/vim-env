@@ -87,7 +87,7 @@ vim.keymap.set("n", "<leader>o", ":QFix<CR>")
 
 -- vim-rooter
 -- Remove "Makefile" from the default list
-vim.g.rooter_patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "package.json" }
+vim.g.rooter_patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn" }
 
 
 -- Smartcolumn (colorcolumn)
