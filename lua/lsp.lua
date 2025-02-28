@@ -99,7 +99,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     patterns = {}
-    for i, ft in ipairs(client.config.filetypes) do
+    for i, ft in ipairs(client.config.filetypes or {}) do
       if fts[ft] ~= nil then
         table.insert(patterns, fts[ft])
       end
