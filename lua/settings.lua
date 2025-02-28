@@ -31,10 +31,10 @@ vim.o.autoindent = true
 vim.o.smartindent = true
 -- C-style indeting
 vim.o.cindent = true
--- Tabs in Go
+-- Tabs in Go/Just
 vim.o.expandtab = true
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-  pattern = "*.go",
+  pattern = { "*.go", "justfile" },
   command = "set noexpandtab",
 })
 

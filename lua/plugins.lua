@@ -26,6 +26,7 @@ Plug("averms/black-nvim", { ["do"] = ":UpdateRemotePlugins" })
 Plug("bergercookie/vim-debugstring")
 Plug("hashivim/vim-terraform")
 Plug("github/copilot.vim")
+Plug("NoahTheDuke/vim-just")
 
 -- Color scheme
 --Plug("rebelot/kanagawa.nvim")
