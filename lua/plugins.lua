@@ -22,7 +22,7 @@ Plug("junegunn/fzf", { ["dir"] = "~/.fzf", ["do"] = "./install --all" })
 Plug("junegunn/fzf.vim")
 Plug("airblade/vim-rooter")
 Plug("godlygeek/tabular")
-Plug("averms/black-nvim", { ["do"] = ":UpdateRemotePlugins" })
+--Plug("averms/black-nvim", { ["do"] = ":UpdateRemotePlugins" })
 Plug("bergercookie/vim-debugstring")
 Plug("hashivim/vim-terraform")
 Plug("github/copilot.vim")
@@ -99,10 +99,10 @@ vim.g.rooter_patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn" }
 
 -- Python Black
 -- The plugin uses nvim's python env (see vim.g.python3_host_prog)
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.py",
-  command = "call BlackSync()",
-})
+--vim.api.nvim_create_autocmd("BufWritePre", {
+--  pattern = "*.py",
+--  command = "call BlackSync()",
+--})
 
 
 --
