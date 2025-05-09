@@ -21,6 +21,7 @@ vim.o.autoread = false
 
 -- No folds
 vim.o.foldenable = false
+vim.o.foldmethod = "indent"
 
 -- Set tab behaviour
 vim.o.shiftwidth = 2
