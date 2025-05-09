@@ -3,29 +3,6 @@ require("lspconfig").gopls.setup {}
 require("lspconfig").golangci_lint_ls.setup {}
 require("lspconfig").clangd.setup {}
 require("lspconfig").lua_ls.setup {}
-require("lspconfig").jsonls.setup {
-  settings = {
-    json = {
-      schemas = require("schemastore").json.schemas({
-        -- extra = {
-        --   {
-        --     description = "My custom JSON schema",
-        --     fileMatch = "foo.json",
-        --     name = "foo.json",
-        --     url = "file:///some/path/file.json",
-        --   },
-        --   {
-        --     description = "My other custom JSON schema",
-        --     fileMatch = { "bar.json", ".baar.json" },
-        --     name = "bar.json",
-        --     url = "https://example.com/schema/bar.json",
-        --   },
-        -- },
-      }),
-      validate = { enable = true },
-    },
-  },
-}
 require("lspconfig").helm_ls.setup {
   settings = {
     ["helm-ls"] = {
