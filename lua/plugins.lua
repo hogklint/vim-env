@@ -75,7 +75,7 @@ vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { silent = true })
 
 -- Fugitive
 vim.keymap.set("n", "<leader>d", ":Gvdiff<CR>", { silent = true })
-vim.keymap.set("n", "<leader>dm", ":Gvdiff refs/remotes/origin/HEAD...<CR>", { silent = true })
+vim.keymap.set("n", "<leader>dm", ":Gvdiff refs/remotes/origin/main...<CR>", { silent = true })
 vim.keymap.set("n", "<leader>s", ":Git<CR>", { silent = true })
 vim.keymap.set("n", "<leader>b", ":Git blame -w -M<CR>", { silent = true })
 vim.keymap.set("n", "<leader>e", ":Gedit<CR>", { silent = true })
