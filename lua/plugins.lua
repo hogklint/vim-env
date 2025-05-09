@@ -92,9 +92,9 @@ vim.g.rooter_patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn" }
 
 
 -- Smartcolumn (colorcolumn)
-require("smartcolumn").setup(
-  { colorcolumn = "120", disabled_filetypes = { "help", "text" } }
-)
+-- require("smartcolumn").setup(
+--   { colorcolumn = "120", disabled_filetypes = { "help", "text" } }
+-- )
 
 
 -- Python Black
