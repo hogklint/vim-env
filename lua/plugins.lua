@@ -39,7 +39,7 @@ Plug("folke/neodev.nvim")
 Plug("tpope/vim-repeat")
 
 -- Color column when max width is reached
-Plug("m4xshen/smartcolumn.nvim")
+--Plug("m4xshen/smartcolumn.nvim")
 
 -- JSON and YAML schemas
 Plug("b0o/schemastore.nvim")
