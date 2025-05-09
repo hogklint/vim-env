@@ -3,6 +3,7 @@ require("lspconfig").gopls.setup {}
 require("lspconfig").golangci_lint_ls.setup {}
 require("lspconfig").clangd.setup {}
 require("lspconfig").lua_ls.setup {}
+require('lspconfig').tsserver.setup {}
 require("lspconfig").helm_ls.setup {
   settings = {
     ["helm-ls"] = {
