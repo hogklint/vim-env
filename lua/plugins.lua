@@ -68,6 +68,7 @@ vim.keymap.set("n", "<C-p>", ":Files<CR>", { silent = true })
 vim.keymap.set("n", "<leader>l", ":Buffers<CR>", { silent = true })
 vim.keymap.set("n", "<leader>r", ":History<CR>", { silent = true })
 vim.keymap.set("n", "<leader>f", ":BTags<CR>", { silent = true })
+vim.keymap.set("n", "<leader>F", ":Ag<CR>", { silent = true })
 vim.keymap.set("n", "q/", ":History/<CR>", { silent = true })
 
 -- Undotree
