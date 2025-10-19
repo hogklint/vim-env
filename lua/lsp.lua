@@ -19,14 +19,14 @@ require("lspconfig").helm_ls.setup {
 -- require("lspconfig").yamlls.setup{}
 
 
-require("lsp_signature").setup({})
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-lsps = { "pyright", "gopls", "lua_ls", "jsonls", "helm_ls" }
-for i, lsp in ipairs(lsps) do
-  require("lspconfig")[lsp].setup {
-    capabilities = capabilities
-  }
-end
+--require("lsp_signature").setup({})
+--local capabilities = require("cmp_nvim_lsp").default_capabilities()
+--lsps = { "pyright", "gopls", "lua_ls", "jsonls", "helm_ls" }
+--for i, lsp in ipairs(lsps) do
+--  require("lspconfig")[lsp].setup {
+--    capabilities = capabilities
+--  }
+--end
 
 
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
@@ -40,13 +40,13 @@ vim.keymap.set("n", "<F5>", ":ClangdSwitchSourceHeader<CR>")
 --
 -- Mapping for filetype to pattern used to activate automatic formatting on save
 --
-fts = { lua = "*.lua", go = "*.go", json = "*.json" }
+--fts = { lua = "*.lua", go = "*.go", json = "*.json" }
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    border = "rounded"
-  }
-)
+--vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+--  vim.lsp.handlers.hover, {
+--    border = "rounded"
+--  }
+--)
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -77,19 +77,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, opts)
 
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    patterns = {}
-    for i, ft in ipairs(client.config.filetypes or {}) do
-      if fts[ft] ~= nil then
-        table.insert(patterns, fts[ft])
-      end
-    end
-    if client.server_capabilities.documentFormattingProvider and next(patterns) ~= nil then
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = patterns,
-        callback = function()
-          vim.lsp.buf.format { async = false }
-        end
-      })
-    end
+    --patterns = {}
+    --for i, ft in ipairs(client.config.filetypes or {}) do
+    --  if fts[ft] ~= nil then
+    --    table.insert(patterns, fts[ft])
+    --  end
+    --end
+    --if client.server_capabilities.documentFormattingProvider and next(patterns) ~= nil then
+    --  vim.api.nvim_create_autocmd("BufWritePre", {
+    --    pattern = patterns,
+    --    callback = function()
+    --      vim.lsp.buf.format { async = false }
+    --    end
+    --  })
+    --end
   end,
 })
