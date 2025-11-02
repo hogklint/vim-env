@@ -1,4 +1,4 @@
 return {
-  "mbbill/undotree",
-  "tpope/vim-fugitive",
+  --"mbbill/undotree",
+  --"tpope/vim-fugitive",
 }
