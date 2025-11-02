@@ -13,13 +13,7 @@ require("lspconfig").helm_ls.setup {
     }
   }
 }
--- Hmm... I mostly use YAML in Helm and this is not really helpful
--- https://github.com/redhat-developer/yaml-language-server/issues/766
--- https://github.com/mrjosh/helm-ls/issues/44
--- require("lspconfig").yamlls.setup{}
 
-
---require("lsp_signature").setup({})
 --local capabilities = require("cmp_nvim_lsp").default_capabilities()
 --lsps = { "pyright", "gopls", "lua_ls", "jsonls", "helm_ls" }
 --for i, lsp in ipairs(lsps) do
