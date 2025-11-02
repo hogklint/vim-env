@@ -1,18 +1,27 @@
-require("lspconfig").pyright.setup {}
-require("lspconfig").gopls.setup {}
-require("lspconfig").golangci_lint_ls.setup {}
-require("lspconfig").clangd.setup {}
-require("lspconfig").lua_ls.setup {}
-require('lspconfig').tsserver.setup {}
-require("lspconfig").helm_ls.setup {
-  settings = {
-    ["helm-ls"] = {
-      yamlls = {
-        path = "yaml-language-server",
-      }
-    }
-  }
-}
+vim.lsp.config('pyright', {})
+vim.lsp.config('gopls', {})
+vim.lsp.config('golangci_lint_ls', {})
+vim.lsp.config('clangd', {})
+vim.lsp.config('lua_ls', {})
+-- TODO: replace with ts_ls
+vim.lsp.config('tsserver', {})
+--vim.lsp.config('helm_ls', {
+--  settings = {
+--    ["helm-ls"] = {
+--      yamlls = {
+--        path = "yaml-language-server",
+--      }
+--    }
+--  }
+--})
+
+vim.lsp.enable('pyright')
+vim.lsp.enable('gopls')
+vim.lsp.enable('golangci_lint_ls')
+vim.lsp.enable('clangd')
+vim.lsp.enable('lua_ls')
+-- TODO: replace with ts_ls
+vim.lsp.enable('tsserver')
 
 --local capabilities = require("cmp_nvim_lsp").default_capabilities()
 --lsps = { "pyright", "gopls", "lua_ls", "jsonls", "helm_ls" }

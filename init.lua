@@ -1,5 +1,5 @@
 require("settings")
 require("keymaps")
 require("lazy_init")
---require("lsp")
+require("lsp")
 require("statusline")
