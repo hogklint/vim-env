@@ -45,12 +45,6 @@ vim.keymap.set("n", "<F5>", ":ClangdSwitchSourceHeader<CR>")
 --
 --fts = { lua = "*.lua", go = "*.go", json = "*.json" }
 
---vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
---  vim.lsp.handlers.hover, {
---    border = "rounded"
---  }
---)
-
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
@@ -84,7 +78,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
     vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, { desc = "Goto T[y]pe Definition" })
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
-    vim.keymap.set("n", "K", function() return vim.lsp.buf.hover() end, { desc = "Hover" })
+    vim.keymap.set("n", "K", function() return vim.lsp.buf.hover({ border = "rounded" }) end, { desc = "Hover" })
     vim.keymap.set("n", "gK", function() return vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
     vim.keymap.set("i", "<c-k>", function() return vim.lsp.buf.signature_help() end, { desc = "Signature Help" })
     vim.keymap.set({"n", "x"}, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
