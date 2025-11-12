@@ -21,7 +21,7 @@ return {
 
   "bergercookie/vim-debugstring",
   -- Enable repeat of vim-debugstring by pressing period
-  --"tpope/vim-repeat",
+  "tpope/vim-repeat",
 
   -- Color scheme
   --"rebelot/kanagawa.nvim",
