@@ -14,7 +14,12 @@ return {
   --"b0o/schemastore.nvim",
   --"towolf/vim-helm",
 
-  --"hogklint/QFixToggle",
+  {
+    "hogklint/QFixToggle",
+    keys = {
+      { "<leader>o", "<cmd>QFix<cr>", desc = "Toggle quickfix list" },
+    },
+  },
   --"tpope/vim-fugitive",
   --"airblade/vim-rooter",
   --"github/copilot.vim",
