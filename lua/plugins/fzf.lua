@@ -14,13 +14,13 @@ return {
       { "<c-j>", "<c-j>", ft = "fzf", mode = "t", nowait = true },
       { "<c-k>", "<c-k>", ft = "fzf", mode = "t", nowait = true },
       {
-        "<leader>,",
+        "<leader>l",
         "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>",
         desc = "Switch Buffer",
       },
       { "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Grep (Root Dir)" },
       { "<leader>:", "<cmd>FzfLua command_history<cr>", desc = "Command History" },
-      { "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Find Files (Root Dir)" },
+      { "<c-p>", "<cmd>FzfLua files<cr>", desc = "Find Files (Root Dir)" },
       -- find
       { "<leader>fb", "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
       --{ "<leader>fc", LazyVim.pick.config_files(), desc = "Find Config File" },
