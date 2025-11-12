@@ -22,7 +22,7 @@ return {
   },
   --"tpope/vim-fugitive",
   --"airblade/vim-rooter",
-  --"github/copilot.vim",
+  "github/copilot.vim",
 
   "bergercookie/vim-debugstring",
   -- Enable repeat of vim-debugstring by pressing period
