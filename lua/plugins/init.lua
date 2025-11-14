@@ -21,7 +21,6 @@ return {
     },
   },
   --"airblade/vim-rooter",
-  "github/copilot.vim",
 
   "bergercookie/vim-debugstring",
   -- Enable repeat of vim-debugstring by pressing period
