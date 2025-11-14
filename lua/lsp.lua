@@ -1,10 +1,11 @@
-require("lspconfig").pyright.setup {}
-require("lspconfig").gopls.setup {}
-require("lspconfig").golangci_lint_ls.setup {}
-require("lspconfig").clangd.setup {}
-require("lspconfig").lua_ls.setup {}
-require('lspconfig').tsserver.setup {}
-require("lspconfig").helm_ls.setup {
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+vim.lsp.config('pyright', {})
+vim.lsp.config('gopls', {})
+vim.lsp.config('golangci_lint_ls', {})
+vim.lsp.config('clangd', {})
+vim.lsp.config('lua_ls', {})
+vim.lsp.config('ts_ls', {})
+vim.lsp.config('helm_ls', {
   settings = {
     ["helm-ls"] = {
       yamlls = {
@@ -12,21 +13,27 @@ require("lspconfig").helm_ls.setup {
       }
     }
   }
-}
+})
 -- Hmm... I mostly use YAML in Helm and this is not really helpful
 -- https://github.com/redhat-developer/yaml-language-server/issues/766
 -- https://github.com/mrjosh/helm-ls/issues/44
 -- require("lspconfig").yamlls.setup{}
 
+vim.lsp.enable('pyright')
+vim.lsp.enable('gopls')
+--vim.lsp.enable('golangci_lint_ls')
+vim.lsp.enable('clangd')
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('ts_ls')
+
 
 require("lsp_signature").setup({})
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-lsps = { "pyright", "gopls", "lua_ls", "jsonls", "helm_ls" }
-for i, lsp in ipairs(lsps) do
-  require("lspconfig")[lsp].setup {
-    capabilities = capabilities
-  }
-end
+--lsps = { "pyright", "gopls", "lua_ls", "jsonls", "helm_ls" }
+--for i, lsp in ipairs(lsps) do
+--  require("lspconfig")[lsp].setup {
+--    capabilities = capabilities
+--  }
+--end
 
 
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
