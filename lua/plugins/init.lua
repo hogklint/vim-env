@@ -20,7 +20,6 @@ return {
       { "<leader>o", "<cmd>QFix<cr>", desc = "Toggle quickfix list" },
     },
   },
-  --"tpope/vim-fugitive",
   --"airblade/vim-rooter",
   "github/copilot.vim",
 
