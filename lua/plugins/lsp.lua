@@ -14,7 +14,7 @@ return {
   {
     "mason-org/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = { "ts_ls" },
+      ensure_installed = { "ts_ls", "gopls", "golangci_lint_ls", "pyright", "clangd" },
     },
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
