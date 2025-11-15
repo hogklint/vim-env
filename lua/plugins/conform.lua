@@ -11,10 +11,10 @@ return {
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
-				fish = { "fish_indent" },
 				sh = { "shfmt" },
 				typescript = { "biome", "prettierd", stop_after_first = true },
 				go = { "gofmt" },
+				python = { "black" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
