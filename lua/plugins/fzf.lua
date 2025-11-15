@@ -91,6 +91,14 @@ return {
 				end,
 				desc = "Goto Symbol (Workspace)",
 			},
+			{
+				"<leader>sp",
+				function()
+					local a = require("fzf-lua").fzf_exec({ "asdf", "qwer" })
+					print("[fzf.lua:98] DEBUGGING STRING ==> " .. tostring(a))
+				end,
+				desc = "Find projects",
+			},
 		},
 	},
 	--{
