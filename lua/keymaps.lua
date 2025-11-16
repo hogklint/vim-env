@@ -26,7 +26,7 @@ vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- Clear search highlight
-vim.keymap.set("n", "<leader><CR>", ":noh<CR>", {silent = true})
+vim.keymap.set("n", "<leader><CR>", ":noh<CR>", { silent = true })
 
 -- Paste in insert mode
 vim.keymap.set("i", "<leader>p", '<C-R>"')
@@ -35,3 +35,6 @@ vim.keymap.set("i", "<leader>p", '<C-R>"')
 vim.keymap.set("n", "<leader>n", ":cn<CR>")
 vim.keymap.set("n", "<leader>p", ":cp<CR>")
 vim.keymap.set("n", "<leader>c", ":cc<CR>")
+
+vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
