@@ -9,7 +9,14 @@ return {
 		-- dependencies = { "nvim-tree/nvim-web-devicons" },
 		-- or if using mini.icons/mini.nvim
 		-- dependencies = { "nvim-mini/mini.icons" },
-		opts = {},
+		opts = {
+			fzf_opts = {
+				["--layout"] = "default",
+				--["--info"] = "inline",
+				--["--height"] = "80%",
+				--["--preview-window"] = "right:60%",
+			},
+		},
 		keys = {
 			{ "<c-j>", "<c-j>", ft = "fzf", mode = "t", nowait = true },
 			{ "<c-k>", "<c-k>", ft = "fzf", mode = "t", nowait = true },
