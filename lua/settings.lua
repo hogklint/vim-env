@@ -35,8 +35,8 @@ vim.o.cindent = true
 -- Tabs in Go/Just
 vim.o.expandtab = true
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-  pattern = { "*.go", "justfile" },
-  command = "set noexpandtab",
+	pattern = { "*.go", "justfile" },
+	command = "set noexpandtab",
 })
 
 -- Line wrap length (when using `gq`)
@@ -74,10 +74,10 @@ vim.opt.wildignore = { "*.o", "*.obj", ".git", "*.idl" }
 -- Spell check on file types
 ftypes = { "markdown", "gitcommit" }
 for i, ftype in ipairs(ftypes) do
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = ftype,
-    command = "setlocal spell spelllang=en_us",
-  })
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = ftype,
+		command = "setlocal spell spelllang=en_us",
+	})
 end
 
 -- Highlight trailing whitespace
@@ -85,8 +85,8 @@ vim.o.list = true
 vim.opt.listchars = { tab = "  ", trail = "-", nbsp = "+" }
 vim.api.nvim_set_hl(0, "ExtraWhitespace", { ctermbg = "darkgreen" })
 vim.api.nvim_create_autocmd("BufWinEnter", {
-  pattern = "*",
-  command = "let w:m1=matchadd('ExtraWhitespace', '\\s\\+$\\| \\+\\ze\\t', -1)",
+	pattern = "*",
+	command = "let w:m1=matchadd('ExtraWhitespace', '\\s\\+$\\| \\+\\ze\\t', -1)",
 })
 
 -- This is where pynvim and black is installed. Not sure how that works with a per-project venv
