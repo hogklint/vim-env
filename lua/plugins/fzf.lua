@@ -14,7 +14,17 @@ return {
 				["--layout"] = "default",
 				--["--info"] = "inline",
 				--["--height"] = "80%",
-				--["--preview-window"] = "right:60%",
+				--["--preview-window"] = "right:10%",
+			},
+			winopts = {
+				preview = {
+					layout = "flex",
+					horizontal = "right:50%",
+					-- "flip_columns" is the threshold width (in characters).
+					-- If window width is less than, it switches to vertical (preview at bottom/top).
+					-- Increase this value to make the flex layout kick in "earlier"
+					flip_columns = 170,
+				},
 			},
 		},
 		keys = {
