@@ -38,5 +38,6 @@ vim.keymap.set("n", "<leader>c", ":cc<CR>")
 
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+vim.keymap.set("n", "<leader>dd", "<C-W>c", { desc = "Delete Window" })
 
 vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
