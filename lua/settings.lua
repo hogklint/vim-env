@@ -39,6 +39,9 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 	command = "set noexpandtab",
 })
 
+-- Don't ask to reload file
+vim.o.autoread = true
+
 -- Line wrap length (when using `gq`)
 vim.o.textwidth = 120
 
