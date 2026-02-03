@@ -38,6 +38,25 @@ return {
 		end,
 		keys = function()
 			local fzflua = require("fzf-lua")
+
+			local project_patterns = {
+				"~/te/*",
+			}
+
+			-- Helper function to get all project directories from configured patterns
+			local function get_projects()
+				local projects = {}
+				for _, pattern in ipairs(project_patterns) do
+					local paths = vim.fn.glob(pattern, false, true)
+					for _, p in ipairs(paths) do
+						if vim.fn.isdirectory(p) == 1 then
+							table.insert(projects, p)
+						end
+					end
+				end
+				return projects
+			end
+
 			return {
 				{ "<c-j>", "<c-j>", ft = "fzf", mode = "t", nowait = true },
 				{ "<c-k>", "<c-k>", ft = "fzf", mode = "t", nowait = true },
@@ -122,10 +141,19 @@ return {
 				{
 					"<leader>sp",
 					function()
-						local a = fzflua.fzf_exec({ "asdf", "qwer" })
-						print("[fzf.lua:98] DEBUGGING STRING ==> " .. tostring(a))
+						fzflua.fzf_exec(get_projects(), {
+							prompt = "Projects> ",
+							actions = {
+								["default"] = function(selected)
+									if selected and selected[1] then
+										vim.cmd.cd(selected[1])
+										print("Changed directory to: " .. selected[1])
+									end
+								end,
+							},
+						})
 					end,
-					desc = "Find projects",
+					desc = "Switch Project Directory",
 				},
 			}
 		end,
