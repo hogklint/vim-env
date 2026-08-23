@@ -1,7 +1,7 @@
 return {
 	{
 		"junegunn/fzf",
-		{ ["dir"] = "~/.fzf", ["do"] = "./install --all" },
+		build = "./install --all",
 	},
 	{
 		"ibhagwan/fzf-lua",
