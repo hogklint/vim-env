@@ -21,7 +21,11 @@ vim.o.autoread = false
 
 -- No folds
 vim.o.foldenable = false
-vim.o.foldmethod = "indent"
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
 
 -- Set tab behaviour
 vim.o.shiftwidth = 2
