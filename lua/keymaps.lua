@@ -41,3 +41,7 @@ vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<leader>dd", "<C-W>c", { desc = "Delete Window" })
 
 vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+
+-- Split
+vim.keymap.set("n", '<leader>"', "<cmd>sp<cr>", { desc = "Split window horizontally" })
+vim.keymap.set("n", "<leader>%", "<cmd>vsp<cr>", { desc = "Split window vertically" })
