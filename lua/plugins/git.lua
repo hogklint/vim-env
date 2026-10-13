@@ -4,6 +4,7 @@ return {
 		lazy = false,
 		keys = {
 			{ "<leader>dm", ":Gvdiff refs/remotes/origin/main...<CR>", { silent = true } },
+			{ "<leader>dc", ":Gvdiff HEAD^<CR>", { silent = true } },
 			--{"<leader>s", ":Git<CR>", { silent = true }},
 			{ "<leader>b", ":Git blame -w -M<CR>", { silent = true } },
 			{ "<leader>e", ":Gedit<CR>", { silent = true } },
