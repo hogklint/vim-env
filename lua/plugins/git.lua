@@ -5,6 +5,19 @@ return {
 		keys = {
 			{ "<leader>dm", ":Gvdiff refs/remotes/origin/main...<CR>", { silent = true } },
 			{ "<leader>dc", ":Gvdiff HEAD^<CR>", { silent = true } },
+			{
+				"<leader>dp",
+				function()
+					local branch = vim.fn.FugitiveHead()
+					local prefix, n = branch:match("^(.-)(%d+)$")
+					if not prefix or tonumber(n) == 0 then
+						vim.notify("Branch '" .. branch .. "' has no previous review", vim.log.levels.WARN)
+						return
+					end
+					vim.cmd.Gvdiff(prefix .. (tonumber(n) - 1))
+				end,
+				{ silent = true },
+			},
 			--{"<leader>s", ":Git<CR>", { silent = true }},
 			{ "<leader>b", ":Git blame -w -M<CR>", { silent = true } },
 			{ "<leader>e", ":Gedit<CR>", { silent = true } },
