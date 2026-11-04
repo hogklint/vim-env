@@ -65,7 +65,7 @@ return {
 					"<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>",
 					desc = "Switch Buffer",
 				},
-				{ "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "Grep (Root Dir)" },
+				{ "<leader>/", "<cmd>FzfLua grep_project<cr>", desc = "Grep (Root Dir)" },
 				{ "<leader>:", "<cmd>FzfLua command_history<cr>", desc = "Command History" },
 				{ "<c-p>", "<cmd>FzfLua files<cr>", desc = "Find Files (Root Dir)" },
 				-- find
